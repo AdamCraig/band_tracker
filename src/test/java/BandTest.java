@@ -33,5 +33,10 @@ public class BandTest {
     assertTrue(firstBand.equals(secondBand));
   }
 
-  
+  @Test
+  public void save_savesBandCorrectly_1() {
+    Band newBand = new Band("Journey");
+    newBand.save();
+    assertEquals(1, Band.all().size());
+  }
 }
