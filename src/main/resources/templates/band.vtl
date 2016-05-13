@@ -1,3 +1,17 @@
 band.vtl
 
 <h1>$band.getName()</h1>
+
+
+
+
+
+
+
+
+<form action='/bands/$band.getId()/delete' method='post'>
+  <button type="submit" class="btn btn-danger" id="delete-band">Delete Band</button>
+</form>
+<br>
+
+<a href="/" class="btn btn-warning home">Back To Home</a>

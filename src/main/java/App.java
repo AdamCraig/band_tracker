@@ -35,5 +35,13 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
+    post("/bands/:id/delete", (request, response) -> {
+      int bandId = Integer.parseInt(request.params("id"));
+      Band band = Band.find(bandId);
+      band.delete();
+      response.redirect("/");
+      return null;
+    });
+
   }
 }
