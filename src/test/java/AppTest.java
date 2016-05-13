@@ -110,7 +110,29 @@ public class AppTest extends FluentTest {
     String url = String.format("http://localhost:4567/venues/%d", testVenue.getId());
     goTo(url);
     submit("#delete-venue");
-    assertFalse(pageSource().contains("A Bad Band"));
+    assertFalse(pageSource().contains("A Bad Venue"));
+  }
+
+  @Test
+  public void venueNameIsUpdated() {
+    Venue testVenue = new Venue("Test Arena");
+    testVenue.save();
+    String url = String.format("http://localhost:4567/venues/%d", testVenue.getId());
+    goTo(url);
+    fill("#updateVenue").with("Super Test Arena");
+    submit("#update-submit");
+    assertThat(pageSource().contains("Super Test Arena"));
+  }
+
+  @Test
+  public void newBandIsAddedToVenue() {
+    Venue testVenue = new Venue("Fenway Park");
+    testVenue.save();
+    String url = String.format("http://localhost:4567/venues/%d", testVenue.getId());
+    goTo(url);
+    fill("#band").with("The Boston Red Sox");
+    submit("#band-submit");
+    assertThat(pageSource().contains("The Boston Red Sox"));
   }
 
 }

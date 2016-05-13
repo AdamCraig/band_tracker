@@ -8,7 +8,7 @@ input {
   color: black;
 }
 
-.bandList {
+.bandList, .venueList {
   font-size: 26pt;
   color: green;
 }
