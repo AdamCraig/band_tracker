@@ -25,4 +25,13 @@ public class BandTest {
   public void all_emptyAtFirst() {
     assertEquals(Band.all().size(), 0);
   }
+
+  @Test
+  public void equals_returnsTrueIfBandsAreTheSame_true() {
+    Band firstBand = new Band("Eerie Similarities To That Other Band");
+    Band secondBand = new Band("Eerie Similarities To That Other Band");
+    assertTrue(firstBand.equals(secondBand));
+  }
+
+  
 }
