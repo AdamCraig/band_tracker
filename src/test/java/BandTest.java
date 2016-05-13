@@ -41,7 +41,7 @@ public class BandTest {
   }
 
   @Test
-  public void save_assignsIdToObject() {
+  public void save_assignsIdToObject_ID() {
     Band myBand = new Band("Boy Band");
     myBand.save();
     Band savedBand = Band.all().get(0);
@@ -62,5 +62,13 @@ public class BandTest {
     myBand.save();
     myBand.update("HUG");
     assertEquals("HUG", Band.find(myBand.getId()).getName());
+  }
+
+  @Test
+  public void delete_deletesBandInOwnTableInDatabase_0() {
+    Band myBand = new Band("ZZ Top");
+    myBand.save();
+    myBand.delete();
+    assertEquals(0, Band.all().size());
   }
 }
