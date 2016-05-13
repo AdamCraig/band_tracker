@@ -78,4 +78,20 @@ public class AppTest extends FluentTest {
     assertThat(pageSource().contains("A Good Venue"));
   }
 
+  @Test
+  public void venuesPageIsDisplayedTest() {
+    Venue testVenue = new Venue("Another Venue");
+    testVenue.save();
+    goTo("http://localhost:4567/venues");
+    assertThat(pageSource()).contains("Another Venue");
+  }
+
+  @Test
+  public void venueIsCreatedAndDisplayedTest() {
+    goTo("http://localhost:4567/venues");
+    fill("#new-venue").with("Super Arena");
+    submit("#venueSubmit");
+    assertThat(pageSource()).contains("Super Arena");
+  }
+
 }

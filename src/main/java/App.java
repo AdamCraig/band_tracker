@@ -76,5 +76,21 @@ public class App {
       return null;
     });
 
+    get("/venues", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      List<Venue> allVenues = Venue.all();
+      model.put("allVenues", allVenues);
+      model.put("template", "templates/venues.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    post("/venues", (request, response) -> {
+      String venue = request.queryParams("venue");
+      Venue newVenue = new Venue(venue);
+      newVenue.save();
+      response.redirect("/venues");
+      return null;
+    });
+
   }
 }
