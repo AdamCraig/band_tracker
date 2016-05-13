@@ -32,7 +32,8 @@ public class Venue {
       return false;
     } else {
       Venue newVenue = (Venue) otherVenue;
-      return this.getName().equals(newVenue.getName());
+      return this.getName().equals(newVenue.getName()) &&
+             this.getId() == newVenue.getId();
     }
   }
 
@@ -77,7 +78,16 @@ public class Venue {
         con.createQuery(joinDeleteQuery)
           .addParameter("venueId", this.id)
           .executeUpdate();
+    }
+  }
 
+  public void addBand(Band band) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "INSERT INTO bands_venues (band_id, venue_id) VALUES (:band_id, :venue_id)";
+        con.createQuery(sql)
+          .addParameter("venue_id", this.getId())
+          .addParameter("band_id", band.getId())
+          .executeUpdate();
     }
   }
 

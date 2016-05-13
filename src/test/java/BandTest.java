@@ -71,4 +71,26 @@ public class BandTest {
     myBand.delete();
     assertEquals(0, Band.all().size());
   }
+
+  @Test
+  public void addVenue_addsVenueToBand_true() {
+    Venue myVenue = new Venue("Super Big Arena");
+    myVenue.save();
+    Band myBand = new Band("The Doors");
+    myBand.save();
+    myBand.addVenue(myVenue);
+    Venue savedVenue = myBand.getVenues().get(0);
+    assertTrue(myVenue.equals(savedVenue));
+  }
+
+  @Test
+  public void getVenues_returnsAllVenues_List() {
+    Venue myVenue = new Venue("Wrap Village");
+    myVenue.save();
+    Band myBand = new Band("Wrap Music");
+    myBand.save();
+    myVenue.addBand(myBand);
+    List savedVenues = myBand.getVenues();
+    assertEquals(1, savedVenues.size());
+  }
 }
