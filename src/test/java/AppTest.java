@@ -37,4 +37,13 @@ public class AppTest extends FluentTest {
     assertThat(pageSource()).contains("Aerosmith");
   }
 
+  @Test
+  public void bandPageIsDisplayedTest() {
+    Band testBand = new Band("The 1975");
+    testBand.save();
+    String url = String.format("http://localhost:4567/bands/%d", testBand.getId());
+    goTo(url);
+    assertThat(pageSource()).contains("The 1975");
+  }
+
 }
