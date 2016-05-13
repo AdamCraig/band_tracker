@@ -43,5 +43,38 @@ public class App {
       return null;
     });
 
+    post("/bands/:id/update", (request, response) -> {
+      int bandId = Integer.parseInt(request.params("id"));
+      Band band = Band.find(bandId);
+      String newName = request.queryParams("update");
+      band.update(newName);
+      response.redirect("/bands/" + band.getId());
+      return null;
+    });
+
+    post("/bands/:id/venue/new", (request, response) -> {
+      Band band = Band.find(Integer.parseInt(request.params(":id")));
+      String venue = request.queryParams("venue");
+      List<Venue> allVenues = Venue.all();
+      Venue newVenue = new Venue(venue);
+      boolean matchFound = false;
+
+      for(Venue oldVenue : allVenues) {
+        if (newVenue.getName().equals(oldVenue.getName())) {
+          band.addVenue(oldVenue);
+          matchFound = true;
+          break;
+        }
+      }
+
+      if (matchFound == false) {
+        newVenue.save();
+        band.addVenue(newVenue);
+      }
+
+      response.redirect("/bands/" + band.getId());
+      return null;
+    });
+
   }
 }

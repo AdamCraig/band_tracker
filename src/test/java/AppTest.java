@@ -56,4 +56,26 @@ public class AppTest extends FluentTest {
     assertFalse(pageSource().contains("A Bad Band"));
   }
 
+  @Test
+  public void bandNameIsUpdated() {
+    Band testBand = new Band("Panic At The Disco");
+    testBand.save();
+    String url = String.format("http://localhost:4567/bands/%d", testBand.getId());
+    goTo(url);
+    fill("#update").with("Panic! At The Disco");
+    submit("#update-submit");
+    assertThat(pageSource().contains("Panic! At The Disco"));
+  }
+
+  @Test
+  public void newVenueIsAddedToBand() {
+    Band testBand = new Band("A Good Band");
+    testBand.save();
+    String url = String.format("http://localhost:4567/bands/%d", testBand.getId());
+    goTo(url);
+    fill("#venue").with("A Good Venue");
+    submit("#venue-submit");
+    assertThat(pageSource().contains("A Good Venue"));
+  }
+
 }
