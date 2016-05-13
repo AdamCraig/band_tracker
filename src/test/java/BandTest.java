@@ -20,4 +20,9 @@ public class BandTest {
     Band myBand = new Band("Pop Band");
     assertEquals("Pop Band", myBand.getName());
   }
+
+  @Test
+  public void all_emptyAtFirst() {
+    assertEquals(Band.all().size(), 0);
+  }
 }
