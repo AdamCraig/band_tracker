@@ -9,7 +9,9 @@ band.vtl
 #if ($venues.size() != 0)
   <h2>This band has rocked the following venues:</h2>
   #foreach ($venue in $venues)
+    <a href="/venues/$venue.getId()">
     <span class="venueList">$venue.getName()</span>
+    </a>
     <br>
   #end
 #else

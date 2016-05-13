@@ -1,6 +1,10 @@
 body {
-  text-align: center;
+  background: url(/home.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
   background-color: black;
+  font-family: sans-serif;
+  text-align: center;
   color: white;
 }
 
