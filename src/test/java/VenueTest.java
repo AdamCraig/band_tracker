@@ -71,4 +71,15 @@ public class VenueTest {
     myVenue.delete();
     assertEquals(0, Venue.all().size());
   }
+
+  @Test
+  public void addBand_addsBandToVenue_true() {
+    Venue myVenue = new Venue("Super Big Arena");
+    myVenue.save();
+    Band myBand = new Band("The Doors");
+    myBand.save();
+    myVenue.addBand(myBand);
+    Band savedBand = myVenue.getBands().get(0);
+    assertTrue(myBand.equals(savedBand));
+  }
 }
