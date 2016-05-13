@@ -1,5 +1,3 @@
-venues.vtl
-
 <h2>All Venues</h2>
 
 <form action="/venues" method="post">
@@ -10,6 +8,7 @@ venues.vtl
 </form>
 
 #foreach ($venue in $allVenues)
+  <span class="glyphicon glyphicon-home big-glyph" aria-hidden="true"></span>
   <a href="/venues/$venue.getId()"><span class="venueList">
     $venue.getName()
   </span></a>

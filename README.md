@@ -18,17 +18,17 @@ _A web app designed with Java that allows a user to utilize a database to create
 * _Clone repository to desktop_
 * _Use console to enter directory with all files_
 * _In a new console window run the command 'postgres' and keep running_
-* _In bash console run the command 'psql band-tracker < band-tracker.sql'_
-* _In a new console window run the command 'psql' then 'CREATE DATABASE band-tracker;'_
-* _For test database run the command '\c band-tracker' to connect to the database_
-* _To create the test database run the command 'CREATE DATABASE band-tracker_test WITH TEMPLATE band-tracker;'_
+* _In a new console window run the command 'psql' then 'CREATE DATABASE band_tracker;'_
+* _In bash console run the command 'psql band_tracker < band_tracker.sql'_
+* _For test database run the command '\c band_tracker' to connect to the database_
+* _To create the test database run the command 'CREATE DATABASE band_tracker_test WITH TEMPLATE band_tracker;'_
 * _RUNNING THE WEB APP_
-* _In console run the command 'gradle run'_
+* _In the console, navigate to the project folder, then run the command 'gradle run'_
 * _Go to http://localhost:4567/_
 
 ## Known Bugs
 
-_No known bugs at this time._
+_At time of this README version, duplicate Venues can be added in individual Band pages, and vice versa. These duplicates are not shown on the lists of all Bands and Venues, only in individual pages._
 
 ## Support and contact details
 
