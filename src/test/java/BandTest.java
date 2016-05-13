@@ -39,4 +39,12 @@ public class BandTest {
     newBand.save();
     assertEquals(1, Band.all().size());
   }
+
+  @Test
+  public void save_assignsIdToObject() {
+    Band myBand = new Band("Boy Band");
+    myBand.save();
+    Band savedBand = Band.all().get(0);
+    assertEquals(myBand.getId(), savedBand.getId());
+  }
 }
