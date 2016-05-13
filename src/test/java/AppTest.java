@@ -29,4 +29,12 @@ public class AppTest extends FluentTest {
     assertThat(pageSource()).contains("Rock The World!");
   }
 
+  @Test
+  public void bandIsCreatedAndDisplayedTest() {
+    goTo("http://localhost:4567/");
+    fill("#band").with("Aerosmith");
+    submit("#bandSubmit");
+    assertThat(pageSource()).contains("Aerosmith");
+  }
+
 }

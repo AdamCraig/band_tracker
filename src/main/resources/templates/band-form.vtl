@@ -1,0 +1,10 @@
+band-form.vtl
+
+<h1>Add New Band</h1>
+
+<form action="/bands/$band.getId()" method="post">
+  <label for="band">Band Name</label>
+  <input id="band" name="band" type="text">
+
+  <button type="submit" class="btn btn-default" id="bandSubmit">Add Band</button>
+</form>

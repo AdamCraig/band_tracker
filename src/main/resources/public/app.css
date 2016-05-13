@@ -1,0 +1,14 @@
+body {
+  text-align: center;
+  background-color: black;
+  color: white;
+}
+
+input {
+  color: black;
+}
+
+.bandList {
+  font-size: 26pt;
+  color: green;
+}
