@@ -73,6 +73,18 @@ public class VenueTest {
   }
 
   @Test
+  public void delete_deleteAllBandAndVenueAssociations() {
+    Venue myVenue = new Venue("Chicago Venue");
+    myVenue.save();
+    Band myBand = new Band("Jam Band");
+    myBand.save();
+    myBand.addVenue(myVenue);
+    myVenue.delete();
+    assertEquals(0, Venue.all().size());
+    assertEquals(0, myBand.getVenues().size());
+  }
+
+  @Test
   public void addBand_addsBandToVenue_true() {
     Venue myVenue = new Venue("Super Big Arena");
     myVenue.save();
