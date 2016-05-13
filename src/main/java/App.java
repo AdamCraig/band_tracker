@@ -92,5 +92,22 @@ public class App {
       return null;
     });
 
+    get("/venues/:id", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      Venue venue = Venue.find(Integer.parseInt(request.params(":id")));
+      model.put("venue", venue);
+      model.put("bands", venue.getBands());
+      model.put("template", "templates/venue.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    post("/venues/:id/delete", (request, response) -> {
+      int venueId = Integer.parseInt(request.params("id"));
+      Venue venue = Venue.find(venueId);
+      venue.delete();
+      response.redirect("/venues");
+      return null;
+    });
+
   }
 }

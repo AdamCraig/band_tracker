@@ -1,0 +1,29 @@
+venue.vtl
+
+<h1>$venue.getName()</h1>
+<form action="/venues/$venue.getId()/update" method="post">
+  <input id="updateVenue" name="updateVenue" type="text" required>
+  <button type="submit" class="btn btn-success" id="update-submit">Update Venue Name</button>
+</form>
+
+#if ($venues.size() != 0)
+  <h2>This venue has hosted the following acts:</h2>
+  #foreach ($venue in $venues)
+    <span class="venueList">$venue.getName()</span>
+    <br>
+  #end
+#else
+  <h2>This venue hasn't hosted any bands yet! If you've seen a band at this venue, add it below!</h2>
+#end
+
+<form action="/venues/$venue.getId()/venue/new" method="post">
+  <input id="band" name="band" type="text">
+  <button type="submit" class="btn btn-default" id="band-submit">Add A Band</button>
+</form>
+
+<form action='/venues/$venue.getId()/delete' method='post'>
+  <button type="submit" class="btn btn-danger" id="delete-venue">Delete Venue</button>
+</form>
+<br>
+
+<a href="/" class="btn btn-warning home">Back To Home</a>

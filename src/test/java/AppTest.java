@@ -94,4 +94,23 @@ public class AppTest extends FluentTest {
     assertThat(pageSource()).contains("Super Arena");
   }
 
+  @Test
+  public void venuePageIsDisplayedTest() {
+    Venue testVenue = new Venue("Ultradome");
+    testVenue.save();
+    String url = String.format("http://localhost:4567/venues/%d", testVenue.getId());
+    goTo(url);
+    assertThat(pageSource()).contains("Ultradome");
+  }
+
+  @Test
+  public void venueIsDeleted() {
+    Venue testVenue = new Venue("A Bad Venue");
+    testVenue.save();
+    String url = String.format("http://localhost:4567/venues/%d", testVenue.getId());
+    goTo(url);
+    submit("#delete-venue");
+    assertFalse(pageSource().contains("A Bad Band"));
+  }
+
 }
