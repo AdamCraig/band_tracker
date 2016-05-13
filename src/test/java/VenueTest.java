@@ -82,4 +82,15 @@ public class VenueTest {
     Band savedBand = myVenue.getBands().get(0);
     assertTrue(myBand.equals(savedBand));
   }
+
+  @Test
+  public void getBands_returnsAllBandsBelongingToAVenue_List() {
+    Venue myVenue = new Venue("Boston Garden");
+    myVenue.save();
+    Band myBand = new Band("Metallica");
+    myBand.save();
+    myVenue.addBand(myBand);
+    List savedBands = myVenue.getBands();
+    assertEquals(1, savedBands.size());
+  }
 }
