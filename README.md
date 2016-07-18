@@ -1,3 +1,7 @@
+![Home Page](screenshot1.png)
+
+![Band Page](screenshot2.png)
+
 # _Band Tracker_
 
 #### _A web app where a user can track the history of a band's touring career, adding the band to specific venues and vice versa._
